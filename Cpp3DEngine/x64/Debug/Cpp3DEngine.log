@@ -2,16 +2,10 @@
 C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\olcConsoleGameEngine.h(759,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\olcConsoleGameEngine.h(1099,31): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\olcConsoleGameEngine.h(1196,4): warning C4312: 'type cast': conversion from 'DWORD' to 'olcConsoleGameEngine *' of greater size
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(152,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(152,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(151,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(151,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(150,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(150,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(157,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(157,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(156,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(156,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(155,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(155,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(176,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(176,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(175,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(175,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(174,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\Cpp3DEngine.cpp(174,47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Cpp3DEngine.vcxproj -> C:\Users\flack\Documents\vscode\coding\Cpp3DEngine\x64\Debug\Cpp3DEngine.exe
