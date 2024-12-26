@@ -1,4 +1,8 @@
 #include "olcConsoleGameEngine.h"
+#include <fstream>
+#include <strstream>
+#include <direct.h>
+#include <iostream>
 using namespace std;
 
 struct vec3d {
@@ -14,6 +18,53 @@ struct triangle {
 
 struct mesh {
     vector<triangle> tris;
+
+    bool LoadFromObjectFile(string sFilename) {
+        // Use a relative path to the current working directory
+        string filePath = sFilename;
+        ifstream f(filePath);
+        if (!f.is_open()) {
+            std::cerr << "Failed to open file: " << filePath << std::endl;
+            // Print the current working directory
+            char cwd[1024];
+            if (_getcwd(cwd, sizeof(cwd)) != NULL) {
+                std::cerr << "Current working directory: " << cwd << std::endl;
+            }
+            return false;
+        }
+
+        vector<vec3d> verts;
+        int vertexCount = 0;
+        int faceCount = 0;
+
+        while (!f.eof()) {
+            char line[128];
+            f.getline(line, 128);
+            strstream s;
+            s << line;
+
+            char junk;
+
+            if (line[0] == 'v') {
+                vec3d v;
+                s >> junk >> v.x >> v.y >> v.z;
+                verts.push_back(v);
+                vertexCount++;
+            }
+            if (line[0] == 'f') {
+                int f[3];
+                s >> junk >> f[0] >> f[1] >> f[2];
+                tris.push_back({
+                   verts[f[0] - 1], verts[f[1] - 1], verts[f[2] - 1]
+                    });
+                faceCount++;
+            }
+        }
+
+        std::cout << "Loaded " << vertexCount << " vertices and " << faceCount << " faces from " << filePath << std::endl;
+
+        return (vertexCount > 0 && faceCount > 0);
+    }
 };
 
 struct mat4x4 {
@@ -83,31 +134,37 @@ private:
 public:
     bool OnUserCreate() override {
 
-        meshCube.tris = {
-            //South
-            {0.0f, 0.0f, 0.0f,  0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 0.0f},
-            {0.0f, 0.0f, 0.0f,  1.0f, 1.0f, 0.0f,   1.0f, 0.0f, 0.0f},
+        //meshCube.tris = {
+        //    //South
+        //    {0.0f, 0.0f, 0.0f,  0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 0.0f},
+        //    {0.0f, 0.0f, 0.0f,  1.0f, 1.0f, 0.0f,   1.0f, 0.0f, 0.0f},
 
-            //East
-            {1.0f, 0.0f, 0.0f,  1.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f},
-            {1.0f, 0.0f, 0.0f,  1.0f, 1.0f, 1.0f,   1.0f, 0.0f, 1.0f},
+        //    //East
+        //    {1.0f, 0.0f, 0.0f,  1.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f},
+        //    {1.0f, 0.0f, 0.0f,  1.0f, 1.0f, 1.0f,   1.0f, 0.0f, 1.0f},
 
-            //North
-            {1.0f, 0.0f, 1.0f,  1.0f, 1.0f, 1.0f,   0.0f, 1.0f, 1.0f},
-            {1.0f, 0.0f, 1.0f,  0.0f, 1.0f, 1.0f,   0.0f, 0.0f, 1.0f},
+        //    //North
+        //    {1.0f, 0.0f, 1.0f,  1.0f, 1.0f, 1.0f,   0.0f, 1.0f, 1.0f},
+        //    {1.0f, 0.0f, 1.0f,  0.0f, 1.0f, 1.0f,   0.0f, 0.0f, 1.0f},
 
-            //West
-            {0.0f, 0.0f, 1.0f,  0.0f, 1.0f, 1.0f,   0.0f, 1.0f, 0.0f},
-            {0.0f, 0.0f, 1.0f,  0.0f, 1.0f, 0.0f,   0.0f, 0.0f, 0.0f},
+        //    //West
+        //    {0.0f, 0.0f, 1.0f,  0.0f, 1.0f, 1.0f,   0.0f, 1.0f, 0.0f},
+        //    {0.0f, 0.0f, 1.0f,  0.0f, 1.0f, 0.0f,   0.0f, 0.0f, 0.0f},
 
-            //Top
-            {0.0f, 1.0f, 0.0f,  0.0f, 1.0f, 1.0f,   1.0f, 1.0f, 1.0f},
-            {0.0f, 1.0f, 0.0f,  1.0f, 1.0f, 1.0f,   1.0f, 1.0f, 0.0f},
+        //    //Top
+        //    {0.0f, 1.0f, 0.0f,  0.0f, 1.0f, 1.0f,   1.0f, 1.0f, 1.0f},
+        //    {0.0f, 1.0f, 0.0f,  1.0f, 1.0f, 1.0f,   1.0f, 1.0f, 0.0f},
 
-            //Bottom
-            {1.0f, 0.0f, 1.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f, 0.0f},
-            {1.0f, 0.0f, 1.0f,  0.0f, 0.0f, 0.0f,   1.0f, 0.0f, 0.0f},
-        };
+        //    //Bottom
+        //    {1.0f, 0.0f, 1.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f, 0.0f},
+        //    {1.0f, 0.0f, 1.0f,  0.0f, 0.0f, 0.0f,   1.0f, 0.0f, 0.0f},
+        //};
+
+        if (!meshCube.LoadFromObjectFile("C:/Users/flack/Documents/vscode/coding/Cpp3DEngine/cube.obj")) {
+            // Handle error
+            std::cerr << "Failed to load object" << std::endl;
+            return false;
+        }
 
         //Matrix
         float fNear = 0.1f; //zNear
